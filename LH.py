@@ -23,7 +23,7 @@ percent = 0.95  # 流量限额，1表示使用到100%关机，默认设置为95%
 #钉钉机器人告警   
 def sendmessage(message):
     #修改为你自己的钉钉webhook
-    url = "https://oapi.dingtalk.com/robot/send?access_token=ae2db43aa2fb35c4b91b7a9974e20810"
+    url = "https://oapi.dingtalk.com/robot/send?access_token=3fa25d59d7ed95b3e66f7e05124a689ae948cff93f3562d4f37406ad859aacfe"
     HEADERS = {
         "Content-Type": "application/json ;charset=utf-8"
     }
@@ -132,7 +132,7 @@ def dofetch(id, key, region):
 
 if __name__ == '__main__':
      doCheck()
-     gaojinTime="流量告警时间："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+"\n"+"\n"
+     gaojinTime="nebulabox流量告警时间："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+"\n"+"\n"
      gaojin=gaojinData+"\n"+"\n"+gaojinSatus+"\n"+"\n"+gaojinResult+"\n"+"\n"+gaojinTime
      sendmessage(gaojin)
     # ck_kafka()
