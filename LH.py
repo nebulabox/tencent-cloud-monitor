@@ -92,7 +92,7 @@ def dofetch(id, key, region):
         TrafficPackageRemaining=str(round(s3['TrafficPackageRemaining']/GB,2)) 
         #告警数据
         global gaojinData
-        gaojinData="流量告警数据:\n"+"已使用："+str(TrafficUsed)+"GB"+"\n"+"总流量："+str(TrafficPackageTotal)+"GB"+"\n"+"剩余量："+str(TrafficPackageRemaining)+"GB"
+        gaojinData="nb流量告警数据:\n"+"已使用："+str(TrafficUsed)+"GB"+"\n"+"总流量："+str(TrafficPackageTotal)+"GB"+"\n"+"剩余量："+str(TrafficPackageRemaining)+"GB"
         #获取实例状态          
         print (i+1,"：",InstanceId,":","已使用：",TrafficUsed,"总流量：",TrafficPackageTotal,"剩余：",TrafficPackageRemaining)
         if (InstanceState == "RUNNING"):
@@ -101,8 +101,12 @@ def dofetch(id, key, region):
             #实例流量超出限制自动关闭
             if (TrafficUsed/TrafficPackageTotal<percent):
                 #告警结果：
-                print("剩余流量充足")  
+                # print("剩余流量充足")  
                 gaojinResult="流量告警结果：剩余流量充足！"
+                gaojinTime="流量告警时间："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+"\n"+"\n"
+                gaojin="nb:" + InstanceId + gaojinData+"\n"+"\n"+gaojinSatus+"\n"+"\n"+gaojinResult+"\n"+"\n"+gaojinTime
+                print(gaojin)
+                sendmessage(msgContent)
             else:
                 print(InstanceId,":","流量超出限制，自动关闭")
                 req_Stop = models.StopInstancesRequest()
@@ -114,12 +118,14 @@ def dofetch(id, key, region):
                 resp_Stop = client.StopInstances(req_Stop) 
                 print(resp_Stop.to_json_string())
                 #添加TG酱通知
-                msgContent= InstanceId+ " ：流量超出限制，即将自动关机。" + "剩余流量：" + TrafficPackageRemaining+ "GB"
+                msgContent= "nb:" + InstanceId+ " ：流量超出限制，即将自动关机。" + "剩余流量：" + TrafficPackageRemaining+ "GB"
                 # msgUrl="https://tgbot-red.vercel.app/api?token="+ tgToken +"&message="+ msgContent
                 #告警结果：
                 gaojinResult="流量告警结果：流量超出限制，即将自动关机。\n"+"剩余流量：" + str(TrafficPackageRemaining)+ "GB"
                 # response= requests.get(url=msgUrl).text
                 # print (response)        
+                print(msgContent)
+                sendmessage(msgContent)
         else:
             gaojinSatus="流量告警状态：已关机!"
             print("已关机")
@@ -132,8 +138,8 @@ def dofetch(id, key, region):
 
 if __name__ == '__main__':
      doCheck()
-     gaojinTime="nebulabox流量告警时间："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+"\n"+"\n"
+     gaojinTime="nb流量告警时间："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+"\n"+"\n"
      gaojin=gaojinData+"\n"+"\n"+gaojinSatus+"\n"+"\n"+gaojinResult+"\n"+"\n"+gaojinTime
-     sendmessage(gaojin)
+     print(gaojin)
     # ck_kafka()
      pass
