@@ -23,7 +23,7 @@ percent = 0.95  # 流量限额，1表示使用到100%关机，默认设置为95%
 #钉钉机器人告警   
 def sendmessage(message):
     #修改为你自己的钉钉webhook
-    url = "https://oapi.dingtalk.com/robot/send?access_token=******************************************"
+    url = "https://oapi.dingtalk.com/robot/send?access_token=ae2db43aa2fb35c4b91b7a9974e20810"
     HEADERS = {
         "Content-Type": "application/json ;charset=utf-8"
     }
@@ -32,7 +32,7 @@ def sendmessage(message):
         "text": {"content": message},
         "at": {
             "atMobiles": [
-                "15*********"                                    #如果需要@某人，这里写他的手机号
+                #"135xxx"                                    #如果需要@某人，这里写他的手机号
             ],
             "isAtAll": 1                                         #如果需要@所有人，这里写1
         }
