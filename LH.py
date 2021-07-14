@@ -138,8 +138,4 @@ def dofetch(id, key, region):
 
 if __name__ == '__main__':
      doCheck()
-     gaojinTime="nb流量告警时间："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+"\n"+"\n"
-     gaojin=gaojinData+"\n"+"\n"+gaojinSatus+"\n"+"\n"+gaojinResult+"\n"+"\n"+gaojinTime
-     print(gaojin)
-    # ck_kafka()
      pass
