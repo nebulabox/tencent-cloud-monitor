@@ -106,7 +106,7 @@ def dofetch(id, key, region):
                 gaojinTime="流量告警时间："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+"\n"+"\n"
                 gaojin="nb:" + InstanceId + gaojinData+"\n"+"\n"+gaojinSatus+"\n"+"\n"+gaojinResult+"\n"+"\n"+gaojinTime
                 print(gaojin)
-                sendmessage(gaojin)
+                #sendmessage(gaojin)
             else:
                 print(InstanceId,":","流量超出限制，自动关闭")
                 req_Stop = models.StopInstancesRequest()
