@@ -6,3 +6,10 @@ updates:
     interval: weekly
     time: "21:00"
   open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: tencentcloud-sdk-python
+    versions:
+    - 3.0.935
+  - dependency-name: requests
+    versions:
+    - 2.28.0
