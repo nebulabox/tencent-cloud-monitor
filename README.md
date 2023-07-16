@@ -94,16 +94,3 @@ tgToken #TG酱token 加上引号""
 
 ![](https://img.jpggod.com/file/jpggod/2021/04/13/d4b5535109e4e1dba8d6a682363581b1.png)
 
-AD:
-
-腾讯云轻量购买地址：
-
-288即可享受 1C1G30M香港高速CN2GIA服务器：https://curl.qcloud.com/ZYwQKs3G
-
-热门活动还能折上折，详情联系QQ：3502399883
-
-## 赞助：
-
-![](https://www.vx.link/favicon.ico)
-
-[微林](https://www.vx.link/)：提供数款效率工具，帮助您更专注于本质。
